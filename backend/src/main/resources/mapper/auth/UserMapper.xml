@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backend.api.auth.mapper.UserMapper">
+
+    <select id="existsByUserId" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM TN_USER
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <select id="findByUserId" parameterType="string" resultType="com.backend.api.auth.entity.Users">
+        SELECT USER_ID,
+               PASSWORD,
+               AUTH_TYPE
+        FROM TN_USER
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <insert id="save">
+        INSERT INTO TN_USER (USER_ID, PASSWORD, AUTH_TYPE) VALUES (#{user_id}, #{password}, #{auth_type})
+    </insert>
+
+</mapper>

@@ -1,0 +1,27 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /api
+frontend:
+  url: ${FRONTEND_URL}
+
+spring:
+  datasource:
+    url: ${DB_CONNECTION_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    data:
+      host: redis
+      port: 6379
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+jwt:
+  secret: cjnafcBC23Cdcj2194CJDNAJjaJHCOA773CNAJJCsdc3JCC11
+  accessTokenMinute : 30
+  refreshTokenDay : 7
+
+logging:
+  config: classpath:logback/logback-${spring.profiles.active}.xml
